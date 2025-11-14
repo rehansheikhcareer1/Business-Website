@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - BusinessPro{% endblock %}
+
+{% block extra_css %}
+<style>
+    .login-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        padding: 100px 0 50px;
+        margin-top: -75px;
+    }
+    
+    .login-card {
+        border-radius: 25px;
+        border: none;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+    
+    .login-header {
+        background: linear-gradient(135deg, #1a2a6c 0%, #b21f1f 50%, #fdbb2d 100%);
+        padding: 40px;
+        text-align: center;
+        color: white;
+    }
+    
+    .login-header h2 {
+        font-weight: 800;
+        margin-bottom: 10px;
+    }
+    
+    .login-icon {
+        width: 80px;
+        height: 80px;
+        background: rgba(255,255,255,0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        backdrop-filter: blur(10px);
+    }
+    
+    .login-icon i {
+        font-size: 2.5rem;
+        color: white;
+    }
+    
+    .form-control {
+        border: 2px solid #e9ecef;
+        border-radius: 12px;
+        padding: 14px 18px;
+        transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+        border-color: #fdbb2d;
+        box-shadow: 0 0 0 4px rgba(253, 187, 45, 0.1);
+    }
+    
+    .form-label {
+        font-weight: 600;
+        color: #1a2a6c;
+        margin-bottom: 8px;
+    }
+    
+    .btn-login {
+        background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+        border: none;
+        padding: 15px;
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-login:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(178, 31, 31, 0.4);
+    }
+    
+    .signup-link {
+        color: #1a2a6c;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    
+    .signup-link:hover {
+        color: #b21f1f;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="card login-card">
+                    <div class="login-header">
+                        <div class="login-icon">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <h2>Welcome Back</h2>
+                        <p class="mb-0">Login to your account</p>
+                    </div>
+                    
+                    <div class="card-body p-4 p-md-5">
+                        <form method="post">
+                            {% csrf_token %}
+                            
+                            {% if form.non_field_errors %}
+                            <div class="alert alert-danger" style="border-radius: 12px; border: none;">
+                                <i class="fas fa-exclamation-circle me-2"></i>
+                                {{ form.non_field_errors }}
+                            </div>
+                            {% endif %}
+                            
+                            <div class="mb-4">
+                                <label for="{{ form.username.id_for_label }}" class="form-label">
+                                    <i class="fas fa-user me-2"></i>Username
+                                </label>
+                                {{ form.username }}
+                                {% if form.username.errors %}
+                                <div class="text-danger small mt-2">
+                                    <i class="fas fa-exclamation-triangle me-1"></i>
+                                    {{ form.username.errors }}
+                                </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="{{ form.password.id_for_label }}" class="form-label">
+                                    <i class="fas fa-lock me-2"></i>Password
+                                </label>
+                                {{ form.password }}
+                                {% if form.password.errors %}
+                                <div class="text-danger small mt-2">
+                                    <i class="fas fa-exclamation-triangle me-1"></i>
+                                    {{ form.password.errors }}
+                                </div>
+                                {% endif %}
+                            </div>
+                            
+                            <button type="submit" class="btn btn-login w-100 mb-4">
+                                <i class="fas fa-sign-in-alt me-2"></i>Login
+                            </button>
+                            
+                            <div class="text-center">
+                                <p class="mb-0 text-muted">Don't have an account? 
+                                    <a href="{% url 'accounts:signup' %}" class="signup-link">Sign up here</a>
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

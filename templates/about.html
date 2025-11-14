@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+
+{% block title %}About Us - BusinessPro{% endblock %}
+
+{% block extra_css %}
+<style>
+    .about-hero {
+        background: linear-gradient(135deg, rgba(26, 42, 108, 0.95), rgba(178, 31, 31, 0.95)),
+                    url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80') center/cover;
+        padding: 100px 0 80px;
+        margin-top: -75px;
+        padding-top: 175px;
+        color: white;
+        text-align: center;
+    }
+    
+    .about-hero h1 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    }
+    
+    .feature-box {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        transition: all 0.4s ease;
+        border: 2px solid transparent;
+        height: 100%;
+    }
+    
+    .feature-box:hover {
+        transform: translateY(-10px);
+        border-color: #fdbb2d;
+        box-shadow: 0 15px 40px rgba(253, 187, 45, 0.2);
+    }
+    
+    .feature-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        box-shadow: 0 8px 20px rgba(178, 31, 31, 0.3);
+    }
+    
+    .feature-icon i {
+        font-size: 2.5rem;
+        color: white;
+    }
+    
+    .stats-box {
+        background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+        border-radius: 20px;
+        padding: 30px;
+        text-align: center;
+        color: white;
+        transition: all 0.3s ease;
+    }
+    
+    .stats-box:hover {
+        transform: scale(1.05);
+    }
+    
+    .stats-number {
+        font-size: 3rem;
+        font-weight: 800;
+        color: #fdbb2d;
+    }
+    
+    .check-item {
+        background: #f8f9fa;
+        padding: 15px 20px;
+        border-radius: 15px;
+        margin-bottom: 15px;
+        border-left: 4px solid #fdbb2d;
+        transition: all 0.3s ease;
+    }
+    
+    .check-item:hover {
+        background: #fff;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transform: translateX(10px);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="about-hero">
+    <div class="container">
+        <h1 class="mb-3">About BusinessPro</h1>
+        <p class="lead">Empowering businesses since 2020</p>
+    </div>
+</div>
+
+<div class="container my-5">
+    <!-- Stats Section -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-3 col-6">
+            <div class="stats-box">
+                <div class="stats-number">500+</div>
+                <p class="mb-0">Happy Clients</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="stats-box">
+                <div class="stats-number">50+</div>
+                <p class="mb-0">Team Members</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="stats-box">
+                <div class="stats-number">1000+</div>
+                <p class="mb-0">Projects Done</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="stats-box">
+                <div class="stats-number">5+</div>
+                <p class="mb-0">Years Experience</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Features Section -->
+    <div class="row g-4 mb-5">
+        <div class="col-lg-4">
+            <div class="feature-box">
+                <div class="feature-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 style="color: #1a2a6c;">Who We Are</h3>
+                <p class="text-muted">
+                    BusinessPro is a leading provider of professional business solutions, dedicated to helping 
+                    companies achieve their goals and maximize potential.
+                </p>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="feature-box">
+                <div class="feature-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <h3 style="color: #1a2a6c;">Our Mission</h3>
+                <p class="text-muted">
+                    To empower businesses with innovative solutions and strategic guidance that drive 
+                    sustainable growth in an ever-evolving marketplace.
+                </p>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="feature-box">
+                <div class="feature-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <h3 style="color: #1a2a6c;">Our Vision</h3>
+                <p class="text-muted">
+                    To be the most trusted partner for businesses worldwide, known for excellence, 
+                    innovation, and delivering measurable results.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Why Choose Us -->
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h2 class="text-center mb-5" style="color: #1a2a6c; font-weight: 800;">Why Choose Us</h2>
+            <div class="check-item">
+                <i class="fas fa-check-circle me-3" style="color: #fdbb2d; font-size: 1.5rem;"></i>
+                <strong>Expert Team:</strong> Years of industry experience and proven expertise
+            </div>
+            <div class="check-item">
+                <i class="fas fa-check-circle me-3" style="color: #fdbb2d; font-size: 1.5rem;"></i>
+                <strong>Custom Solutions:</strong> Tailored strategies for your unique needs
+            </div>
+            <div class="check-item">
+                <i class="fas fa-check-circle me-3" style="color: #fdbb2d; font-size: 1.5rem;"></i>
+                <strong>Proven Results:</strong> Track record of successful projects
+            </div>
+            <div class="check-item">
+                <i class="fas fa-check-circle me-3" style="color: #fdbb2d; font-size: 1.5rem;"></i>
+                <strong>24/7 Support:</strong> Dedicated customer service team
+            </div>
+            <div class="check-item">
+                <i class="fas fa-check-circle me-3" style="color: #fdbb2d; font-size: 1.5rem;"></i>
+                <strong>Best Value:</strong> Competitive pricing with no hidden costs
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="{% url 'contact:contact' %}" class="btn btn-lg" style="background: linear-gradient(135deg, #1a2a6c, #b21f1f); color: white; padding: 15px 40px; border-radius: 30px; font-weight: 600; border: none;">
+                    Get in Touch <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

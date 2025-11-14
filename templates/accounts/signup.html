@@ -1,0 +1,219 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign Up - BusinessPro{% endblock %}
+
+{% block extra_css %}
+<style>
+    .signup-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        padding: 100px 0 50px;
+        margin-top: -75px;
+    }
+    
+    .signup-card {
+        border-radius: 25px;
+        border: none;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+    
+    .signup-header {
+        background: linear-gradient(135deg, #1a2a6c 0%, #b21f1f 50%, #fdbb2d 100%);
+        padding: 40px;
+        text-align: center;
+        color: white;
+    }
+    
+    .signup-header h2 {
+        font-weight: 800;
+        margin-bottom: 10px;
+    }
+    
+    .signup-icon {
+        width: 80px;
+        height: 80px;
+        background: rgba(255,255,255,0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        backdrop-filter: blur(10px);
+    }
+    
+    .signup-icon i {
+        font-size: 2.5rem;
+        color: white;
+    }
+    
+    .form-control {
+        border: 2px solid #e9ecef;
+        border-radius: 12px;
+        padding: 14px 18px;
+        transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+        border-color: #fdbb2d;
+        box-shadow: 0 0 0 4px rgba(253, 187, 45, 0.1);
+    }
+    
+    .form-label {
+        font-weight: 600;
+        color: #1a2a6c;
+        margin-bottom: 8px;
+    }
+    
+    .btn-signup {
+        background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+        border: none;
+        padding: 15px;
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-signup:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(178, 31, 31, 0.4);
+    }
+    
+    .login-link {
+        color: #1a2a6c;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    
+    .login-link:hover {
+        color: #b21f1f;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="signup-container">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="card signup-card">
+                    <div class="signup-header">
+                        <div class="signup-icon">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <h2>Join BusinessPro</h2>
+                        <p class="mb-0">Create your account today</p>
+                    </div>
+                    
+                    <div class="card-body p-4 p-md-5">
+                        <form method="post">
+                            {% csrf_token %}
+                            
+                            {% if form.non_field_errors %}
+                            <div class="alert alert-danger" style="border-radius: 12px; border: none;">
+                                <i class="fas fa-exclamation-circle me-2"></i>
+                                {{ form.non_field_errors }}
+                            </div>
+                            {% endif %}
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.first_name.id_for_label }}" class="form-label">
+                                        <i class="fas fa-user me-2"></i>First Name
+                                    </label>
+                                    {{ form.first_name }}
+                                    {% if form.first_name.errors %}
+                                    <div class="text-danger small mt-2">
+                                        <i class="fas fa-exclamation-triangle me-1"></i>
+                                        {{ form.first_name.errors }}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.last_name.id_for_label }}" class="form-label">
+                                        <i class="fas fa-user me-2"></i>Last Name
+                                    </label>
+                                    {{ form.last_name }}
+                                    {% if form.last_name.errors %}
+                                    <div class="text-danger small mt-2">
+                                        <i class="fas fa-exclamation-triangle me-1"></i>
+                                        {{ form.last_name.errors }}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="{{ form.username.id_for_label }}" class="form-label">
+                                    <i class="fas fa-at me-2"></i>Username
+                                </label>
+                                {{ form.username }}
+                                {% if form.username.errors %}
+                                <div class="text-danger small mt-2">
+                                    <i class="fas fa-exclamation-triangle me-1"></i>
+                                    {{ form.username.errors }}
+                                </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="{{ form.email.id_for_label }}" class="form-label">
+                                    <i class="fas fa-envelope me-2"></i>Email Address
+                                </label>
+                                {{ form.email }}
+                                {% if form.email.errors %}
+                                <div class="text-danger small mt-2">
+                                    <i class="fas fa-exclamation-triangle me-1"></i>
+                                    {{ form.email.errors }}
+                                </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="{{ form.password1.id_for_label }}" class="form-label">
+                                    <i class="fas fa-lock me-2"></i>Password
+                                </label>
+                                {{ form.password1 }}
+                                {% if form.password1.errors %}
+                                <div class="text-danger small mt-2">
+                                    <i class="fas fa-exclamation-triangle me-1"></i>
+                                    {{ form.password1.errors }}
+                                </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="{{ form.password2.id_for_label }}" class="form-label">
+                                    <i class="fas fa-lock me-2"></i>Confirm Password
+                                </label>
+                                {{ form.password2 }}
+                                {% if form.password2.errors %}
+                                <div class="text-danger small mt-2">
+                                    <i class="fas fa-exclamation-triangle me-1"></i>
+                                    {{ form.password2.errors }}
+                                </div>
+                                {% endif %}
+                            </div>
+                            
+                            <button type="submit" class="btn btn-signup w-100 mb-4">
+                                <i class="fas fa-user-plus me-2"></i>Create Account
+                            </button>
+                            
+                            <div class="text-center">
+                                <p class="mb-0 text-muted">Already have an account? 
+                                    <a href="{% url 'accounts:login' %}" class="login-link">Login here</a>
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

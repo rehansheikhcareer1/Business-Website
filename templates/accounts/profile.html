@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile - BusinessPro{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-body p-5">
+                    <div class="text-center mb-4">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" 
+                             style="width: 100px; height: 100px; font-size: 2.5rem;">
+                            {{ user.username|first|upper }}
+                        </div>
+                    </div>
+                    
+                    <h2 class="text-center mb-4">User Profile</h2>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-4 fw-bold">Username:</div>
+                        <div class="col-md-8">{{ user.username }}</div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-4 fw-bold">Full Name:</div>
+                        <div class="col-md-8">{{ user.get_full_name|default:"Not provided" }}</div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-4 fw-bold">Email:</div>
+                        <div class="col-md-8">{{ user.email|default:"Not provided" }}</div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-4 fw-bold">Member Since:</div>
+                        <div class="col-md-8">{{ user.date_joined|date:"F d, Y" }}</div>
+                    </div>
+                    
+                    <hr class="my-4">
+                    
+                    <div class="text-center">
+                        <a href="{% url 'home' %}" class="btn btn-primary">Back to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

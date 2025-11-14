@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - BusinessPro{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section text-center">
+    <div class="container">
+        <h1 class="animate__animated animate__fadeInDown">Welcome to BusinessPro</h1>
+        <p class="lead mb-4">Your trusted partner for professional business solutions</p>
+        <a href="{% url 'services:list' %}" class="btn btn-light btn-lg">Explore Our Services</a>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="container mb-5">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">Our Services</h2>
+        <p class="text-muted">Comprehensive solutions tailored to your business needs</p>
+    </div>
+    
+    <div class="row g-4">
+        {% for service in services %}
+        <div class="col-md-4">
+            <div class="card service-card">
+                {% if service.image %}
+                <img src="{{ service.image.url }}" class="card-img-top" alt="{{ service.title }}">
+                {% else %}
+                <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" style="height: 200px;">
+                    <i class="fas fa-briefcase fa-4x text-white"></i>
+                </div>
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ service.title }}</h5>
+                    <p class="card-text text-muted">{{ service.get_short_desc }}</p>
+                    {% if service.price %}
+                    <p class="text-primary fw-bold">Starting at Rs. {{ service.price }}</p>
+                    {% endif %}
+                    <a href="{% url 'services:detail' service.pk %}" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center">
+            <p class="text-muted">No services available at the moment.</p>
+        </div>
+        {% endfor %}
+    </div>
+    
+    {% if services %}
+    <div class="text-center mt-5">
+        <a href="{% url 'services:list' %}" class="btn btn-outline-primary btn-lg">View All Services</a>
+    </div>
+    {% endif %}
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-5" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold" style="color: #1a2a6c;">What Our Clients Say</h2>
+            <p class="text-muted">Don't just take our word for it</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm" style="border-radius: 20px; transition: all 0.3s ease;">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #1a2a6c, #b21f1f); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 700;">
+                                A
+                            </div>
+                            <div class="ms-3">
+                                <h6 class="mb-0" style="color: #1a2a6c; font-weight: 700;">Amit Sharma</h6>
+                                <small class="text-muted">CEO, TechVision</small>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <i class="fas fa-star" style="color: #fdbb2d;"></i>
+                            <i class="fas fa-star" style="color: #fdbb2d;"></i>
+                            <i class="fas fa-star" style="color: #fdbb2d;"></i>
+                            <i class="fas fa-star" style="color: #fdbb2d;"></i>
+                            <i class="fas fa-star" style="color: #fdbb2d;"></i>
+                        </div>
+                        <p class="text-muted mb-0">"BusinessPro transformed our operations completely. Their expertise and dedication are unmatched. Highly recommended!"</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm" style="border-radius: 20px; transition: all 0.3s ease;">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #b21f1f, #fdbb2d); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 700;">
+                                P
+                            </div>
+                            <div class="ms-3">
+                                <h6 class="mb-0" style="color: #1a2a6c; font-weight: 700;">Priya Reddy</h6>
+                                <small class="text-muted">Founder, StartupHub</small>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <i class="fas fa-star" style="color: #fdbb2d;"></i>
+                            <i class="fas fa-star" style="color: #fdbb2d;"></i>
+                            <i class="fas fa-star" style="color: #fdbb2d;"></i>
+                            <i class="fas fa-star" style="color: #fdbb2d;"></i>
+                            <i class="fas fa-star" style="color: #fdbb2d;"></i>
+                        </div>
+                        <p class="text-muted mb-0">"Outstanding service! They understood our needs perfectly and delivered beyond expectations. True professionals."</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm" style="border-radius: 20px; transition: all 0.3s ease;">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #fdbb2d, #1a2a6c); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 700;">
+                                R
+                            </div>
+                            <div class="ms-3">
+                                <h6 class="mb-0" style="color: #1a2a6c; font-weight: 700;">Rajesh Kumar</h6>
+                                <small class="text-muted">Director, GlobalTrade</small>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <i class="fas fa-star" style="color: #fdbb2d;"></i>
+                            <i class="fas fa-star" style="color: #fdbb2d;"></i>
+                            <i class="fas fa-star" style="color: #fdbb2d;"></i>
+                            <i class="fas fa-star" style="color: #fdbb2d;"></i>
+                            <i class="fas fa-star" style="color: #fdbb2d;"></i>
+                        </div>
+                        <p class="text-muted mb-0">"Best decision we made! Their solutions helped us scale rapidly. Professional, reliable, and results-driven."</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm" style="border-radius: 20px; transition: all 0.3s ease;">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #1a2a6c, #fdbb2d); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 700;">
+                                M
+                            </div>
+                            <div class="ms-3">
+                                <h6 class="mb-0" style="color: #1a2a6c; font-weight: 700;">Mohammed Al-Rashid</h6>
+                                <small class="text-muted">CEO, Dubai Ventures</small>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <i class="fas fa-star" style="color: #fdbb2d;"></i>
+                            <i class="fas fa-star" style="color: #fdbb2d;"></i>
+                            <i class="fas fa-star" style="color: #fdbb2d;"></i>
+                            <i class="fas fa-star" style="color: #fdbb2d;"></i>
+                            <i class="fas fa-star" style="color: #fdbb2d;"></i>
+                        </div>
+                        <p class="text-muted mb-0">"Exceptional work! BusinessPro helped us expand into new markets. Their strategic approach is world-class."</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm" style="border-radius: 20px; transition: all 0.3s ease;">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #b21f1f, #1a2a6c); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 700;">
+                                S
+                            </div>
+                            <div class="ms-3">
+                                <h6 class="mb-0" style="color: #1a2a6c; font-weight: 700;">Sarah Johnson</h6>
+                                <small class="text-muted">VP Operations, TechCorp</small>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <i class="fas fa-star" style="color: #fdbb2d;"></i>
+                            <i class="fas fa-star" style="color: #fdbb2d;"></i>
+                            <i class="fas fa-star" style="color: #fdbb2d;"></i>
+                            <i class="fas fa-star" style="color: #fdbb2d;"></i>
+                            <i class="fas fa-star" style="color: #fdbb2d;"></i>
+                        </div>
+                        <p class="text-muted mb-0">"Incredible team! They delivered innovative solutions that exceeded our expectations. A true partner in success."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5" style="background: linear-gradient(135deg, #1a2a6c 0%, #b21f1f 50%, #fdbb2d 100%); color: white;">
+    <div class="container text-center">
+        <h3 class="mb-3 fw-bold">Ready to Get Started?</h3>
+        <p class="lead mb-4">Contact us today and let's discuss how we can help your business grow</p>
+        <a href="{% url 'contact:contact' %}" class="btn btn-light btn-lg" style="border-radius: 25px; padding: 15px 40px; font-weight: 600;">Contact Us <i class="fas fa-arrow-right ms-2"></i></a>
+    </div>
+</section>
+
+<style>
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15) !important;
+    }
+</style>
+{% endblock %}
